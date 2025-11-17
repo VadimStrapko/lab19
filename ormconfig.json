@@ -1,0 +1,12 @@
+﻿{
+  "type": "postgres",
+  "host": "postgres",
+  "port": 5432,
+  "username": "postgres",
+  "password": "password123",
+  "database": "nestapp",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true,
+  "retryDelay": 3000,
+  "retryAttempts": 5
+}
