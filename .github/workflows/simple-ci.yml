@@ -1,0 +1,33 @@
+﻿name: Simple CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Build application
+      run: npm run build
+      
+    - name: Create success file
+      run: echo " CI Pipeline completed successfully at $(date)" > ci-success.txt
+      
+    - name: Upload success artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ci-success
+        path: ci-success.txt
